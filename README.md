@@ -17,3 +17,7 @@ npm install
 
 # Start development server
 npm start
+
+# Build the website
+npm run build
+```
