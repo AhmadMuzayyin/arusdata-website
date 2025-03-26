@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples - ArusdataJS Documentation</title>
+  <meta name="description" content="Contoh penggunaan ArusdataJS untuk berbagai skenario aplikasi real-time">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Prism.js untuk syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+          <div class="hidden md:flex ml-6 space-x-8">
+            <a href="../index.html#features"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+            <a href="../index.html#demo"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+            <a href="../index.html#docs"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+            <a href="https://github.com/yourusername/arusdata" target="_blank"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="getting-started.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">API
+            Reference</a>
+          <a href="examples.html"
+            class="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium">Examples</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="../index.html#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="../index.html#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="../index.html#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="getting-started.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Getting
+          Started</a>
+        <a href="api-reference.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">API
+          Reference</a>
+        <a href="examples.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-primary-600 bg-gray-50">Examples</a>
+        <a href="https://github.com/yourusername/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary-600 py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Contoh ArusdataJS</h1>
+      <p class="text-xl text-white text-opacity-90 max-w-3xl">
+        Berbagai contoh kode dan implementasi ArusdataJS untuk membantu Anda memahami penggunaannya.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <a href="#chat-app"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-comments text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Chat Application</h3>
+        </div>
+        <p class="text-gray-600">
+          Aplikasi chat sederhana dengan multiple channels, status pengguna, dan notifikasi.
+        </p>
+      </a>
+
+      <a href="#notifications"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-bell text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Real-time Notifications</h3>
+        </div>
+        <p class="text-gray-600">
+          Sistem notifikasi real-time untuk aplikasi web dan mobile.
+        </p>
+      </a>
+
+      <a href="#dashboard"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-chart-line text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Live Dashboard</h3>
+        </div>
+        <p class="text-gray-600">
+          Dashboard real-time dengan update data langsung dan grafik interaktif.
+        </p>
+      </a>
+
+      <a href="#collaborative"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-users text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Collaborative Editing</h3>
+        </div>
+        <p class="text-gray-600">
+          Editor dokumen kolaboratif dengan multiple users.
+        </p>
+      </a>
+
+      <a href="#multiplayer"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-gamepad text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Multiplayer Game</h3>
+        </div>
+        <p class="text-gray-600">
+          Game multiplayer sederhana dengan pembaruan status game real-time.
+        </p>
+      </a>
+
+      <a href="#private-channels"
+        class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+        <div class="flex items-center mb-4">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+            <i class="fas fa-lock text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Private Channels</h3>
+        </div>
+        <p class="text-gray-600">
+          Penggunaan private channels dengan otentikasi.
+        </p>
+      </a>
+    </div>
+
+    <!-- Chat Application Example -->
+    <section id="chat-app" class="mb-20">
+      <h2 class="text-3xl font-bold mb-8">Chat Application</h2>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h3 class="text-xl font-semibold">Implementasi Chat App</h3>
+        </div>
+        <div class="p-6">
+          <p class="mb-6">
+            Berikut adalah contoh implementasi aplikasi chat sederhana menggunakan ArusdataJS.
+            Aplikasi ini memiliki fitur multiple channels, pesan real-time, dan status pengguna online.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="text-lg font-semibold mb-3">HTML Structure</h4>
+              <div class="bg-gray-800 rounded-md p-4">
+                <pre class="language-html m-0"><code>&lt;div class="chat-container"&gt;
+&lt;div class="sidebar"&gt;
+&lt;div class="user-info"&gt;
+  &lt;input type="text" id="username" placeholder="Your name"&gt;
+  &lt;button id="set-username"&gt;Set&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="channels"&gt;
+  &lt;h3&gt;Channels&lt;/h3&gt;
+  &lt;ul id="channel-list"&gt;
+    &lt;li data-channel="general" class="active"&gt;# general&lt;/li&gt;
+    &lt;li data-channel="random"&gt;# random&lt;/li&gt;
+    &lt;li data-channel="support"&gt;# support&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class="online-users"&gt;
+  &lt;h3&gt;Online Users&lt;/h3&gt;
+  &lt;ul id="user-list"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="chat-area"&gt;
+&lt;div class="chat-header"&gt;
+  &lt;h2 id="current-channel"&gt;# general&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div class="messages" id="messages"&gt;&lt;/div&gt;
+
+&lt;div class="message-input"&gt;
+  &lt;textarea id="message-input" placeholder="Type a message..."&gt;&lt;/textarea&gt;
+  &lt;button id="send-button"&gt;Send&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-3">JavaScript Implementation</h4>
+              <div class="bg-gray-800 rounded-md p-4">
+                <pre class="language-javascript m-0"><code>// Initialize ArusdataJS client
+const arusdata = new ArusdataClient({
+endpoint: 'ws://localhost:8080/arusdata'
+});
+
+// State variables
+let currentChannel = 'general';
+let username = 'Guest-' + Math.floor(1000 + Math.random() * 9000);
+const onlineUsers = new Map();
+
+// DOM elements
+const channelList = document.getElementById('channel-list');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const messagesContainer = document.getElementById('messages');
+const currentChannelElement = document.getElementById('current-channel');
+const usernameInput = document.getElementById('username');
+const setUsernameButton = document.getElementById('set-username');
+const userList = document.getElementById('user-list');
+
+// Set initial username
+usernameInput.value = username;
+
+// Connection handler
+arusdata.onConnection((socketId) => {
+console.log('Connected with socket ID:', socketId);
+
+// Subscribe to channel
+subscribeToChannel(currentChannel);
+
+// Subscribe to presence channel
+subscribeToPresence();
+
+// Announce user online
+announceUserPresence(true);
+});
+
+// Disconnection handler
+arusdata.onDisconnection(() => {
+console.log('Disconnected from server');
+
+// Clear online users
+onlineUsers.clear();
+updateOnlineUsersList();
+});
+
+// Functions
+function subscribeToChannel(channelName) {
+// Update UI
+document.querySelectorAll('#channel-list li').forEach(li => {
+li.classList.remove('active');
+});
+document.querySelector(`#channel-list li[data-channel="${channelName}"]`).classList.add('active');
+currentChannelElement.textContent = `# ${channelName}`;
+
+// Clear messages
+messagesContainer.innerHTML = '';
+
+// Subscribe to channel
+currentChannel = channelName;
+const channel = arusdata.subscribe(channelName);
+
+// Bind to 'message' event
+channel.bind('message', (data) => {
+displayMessage(data);
+});
+
+// Bind to user joined/left events
+channel.bind('user_joined', (data) => {
+displaySystemMessage(`${data.username} joined the channel`);
+});
+
+channel.bind('user_left', (data) => {
+displaySystemMessage(`${data.username} left the channel`);
+});
+}
+
+function subscribeToPresence() {
+const presence = arusdata.subscribe('presence');
+
+presence.bind('user_online', (data) => {
+onlineUsers.set(data.user_id, data.username);
+updateOnlineUsersList();
+});
+
+presence.bind('user_offline', (data) => {
+onlineUsers.delete(data.user_id);
+updateOnlineUsersList();
+});
+}
+
+function updateOnlineUsersList() {
+userList.innerHTML = '';
+
+if (onlineUsers.size === 0) {
+const li = document.createElement('li');
+li.textContent = 'No users online';
+userList.appendChild(li);
+return;
+}
+
+onlineUsers.forEach((username, userId) => {
+const li = document.createElement('li');
+const status = document.createElement('span');
+status.className = 'status-indicator';
+
+const nameSpan = document.createElement('span');
+nameSpan.textContent = username;
+
+li.appendChild(status);
+li.appendChild(nameSpan);
+userList.appendChild(li);
+});
+}
+
+function announceUserPresence(joined = true) {
+// Publish to presence channel
+arusdata.publish('presence', joined ? 'user_online' : 'user_offline', {
+user_id: arusdata.getSocketId(),
+username: username
+});
+
+// Announce join/leave in current channel
+if (joined) {
+arusdata.publish(currentChannel, 'user_joined', {
+  username: username
+});
+} else {
+arusdata.publish(currentChannel, 'user_left', {
+  username: username
+});
+}
+}
+
+function sendMessage() {
+const text = messageInput.value.trim();
+
+if (!text) return;
+
+const message = {
+sender: username,
+text: text,
+timestamp: new Date().toISOString()
+};
+
+arusdata.publish(currentChannel, 'message', message);
+
+// Clear input
+messageInput.value = '';
+}
+
+function displayMessage(message) {
+const messageElement = document.createElement('div');
+messageElement.className = `message ${message.sender === username ? 'own' : 'other'}`;
+
+const header = document.createElement('div');
+header.className = 'message-header';
+
+const sender = document.createElement('span');
+sender.className = 'sender';
+sender.textContent = message.sender;
+
+const time = document.createElement('span');
+time.className = 'time';
+time.textContent = new Date(message.timestamp).toLocaleTimeString();
+
+header.appendChild(sender);
+header.appendChild(time);
+
+const content = document.createElement('div');
+content.className = 'message-content';
+content.textContent = message.text;
+
+messageElement.appendChild(header);
+messageElement.appendChild(content);
+
+messagesContainer.appendChild(messageElement);
+messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function displaySystemMessage(text) {
+const messageElement = document.createElement('div');
+messageElement.className = 'system-message';
+messageElement.textContent = text;
+
+messagesContainer.appendChild(messageElement);
+messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function setUsername() {
+const newUsername = usernameInput.value.trim();
+
+if (!newUsername) return;
+
+const oldUsername = username;
+username = newUsername;
+
+// Update presence
+if (arusdata.isConnected()) {
+arusdata.publish('presence', 'user_online', {
+  user_id: arusdata.getSocketId(),
+  username: username
+});
+
+// System message
+displaySystemMessage(`You changed your username from ${oldUsername} to ${username}`);
+}
+}
+
+// Event Listeners
+sendButton.addEventListener('click', sendMessage);
+
+messageInput.addEventListener('keypress', (e) => {
+if (e.key === 'Enter' && !e.shiftKey) {
+e.preventDefault();
+sendMessage();
+}
+});
+
+setUsernameButton.addEventListener('click', setUsername);
+
+channelList.addEventListener('click', (e) => {
+if (e.target.tagName === 'LI') {
+const channelName = e.target.getAttribute('data-channel');
+
+if (channelName !== currentChannel) {
+  // Leave current channel
+  arusdata.publish(currentChannel, 'user_left', {
+    username: username
+  });
+  
+  // Join new channel
+  subscribeToChannel(channelName);
+  
+  // Announce join
+  arusdata.publish(channelName, 'user_joined', {
+    username: username
+  });
+}
+}
+});</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="text-lg font-semibold mb-3">CSS Styling (Simplified)</h4>
+          <div class="bg-gray-800 rounded-md p-4">
+            <pre class="language-css m-0"><code>.chat-container {
+display: flex;
+height: 500px;
+border: 1px solid #ddd;
+border-radius: 6px;
+overflow: hidden;
+}
+
+.sidebar {
+width: 250px;
+background-color: #f5f5f5;
+border-right: 1px solid #ddd;
+display: flex;
+flex-direction: column;
+}
+
+.user-info,
+.channels,
+.online-users {
+padding: 15px;
+border-bottom: 1px solid #ddd;
+}
+
+.channels h3,
+.online-users h3 {
+margin-top: 0;
+margin-bottom: 10px;
+font-size: 16px;
+font-weight: 600;
+}
+
+#channel-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+#channel-list li {
+padding: 8px 10px;
+cursor: pointer;
+border-radius: 4px;
+}
+
+#channel-list li:hover {
+background-color: #eee;
+}
+
+#channel-list li.active {
+background-color: #e3f2fd;
+color: #1976d2;
+font-weight: 500;
+}
+
+.chat-area {
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+
+.chat-header {
+padding: 15px;
+border-bottom: 1px solid #ddd;
+}
+
+.chat-header h2 {
+margin: 0;
+font-size: 18px;
+font-weight: 600;
+}
+
+.messages {
+flex: 1;
+padding: 15px;
+overflow-y: auto;
+}
+
+.message {
+margin-bottom: 15px;
+max-width: 80%;
+}
+
+.message.own {
+margin-left: auto;
+}
+
+.message-header {
+display: flex;
+justify-content: space-between;
+margin-bottom: 5px;
+font-size: 12px;
+}
+
+.sender {
+font-weight: 600;
+}
+
+.message-content {
+padding: 10px;
+border-radius: 6px;
+background-color: #f1f1f1;
+}
+
+.message.own .message-content {
+background-color: #e3f2fd;
+}
+
+.system-message {
+text-align: center;
+color: #757575;
+font-style: italic;
+margin: 10px 0;
+font-size: 12px;
+}
+
+.message-input {
+display: flex;
+padding: 10px;
+border-top: 1px solid #ddd;
+}
+
+.message-input textarea {
+flex: 1;
+border: 1px solid #ddd;
+border-radius: 4px;
+padding: 10px;
+min-height: 60px;
+resize: none;
+}
+
+.message-input button {
+margin-left: 10px;
+padding: 0 20px;
+background-color: #1976d2;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+#user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#user-list li {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  margin-right: 8px;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h3 class="text-xl font-semibold">Key Features</h3>
+        </div>
+        <div class="p-6">
+          <ul class="list-disc pl-6 space-y-3">
+            <li>Multi-channel support dengan switching antara channels</li>
+            <li>Status pengguna (online/offline) menggunakan presence channel</li>
+            <li>Notifikasi saat pengguna bergabung atau meninggalkan channel</li>
+            <li>Pengaturan username yang bisa diubah</li>
+            <li>Display pesan real-time dengan informasi waktu</li>
+            <li>Styling pesan berbeda untuk pesan sendiri dan orang lain</li>
+            <li>Auto-scrolling ke pesan terbaru</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-time Notifications Example -->
+    <section id="notifications" class="mb-20">
+      <h2 class="text-3xl font-bold mb-8">Real-time Notifications</h2>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h3 class="text-xl font-semibold">Implementasi Sistem Notifikasi</h3>
+        </div>
+        <div class="p-6">
+          <p class="mb-6">
+            Contoh implementasi sistem notifikasi real-time menggunakan ArusdataJS.
+            Ini bisa digunakan untuk mengirim notifikasi seperti pemberitahuan, pembaruan status, atau aktivitas
+            pengguna lain.
+          </p>
+
+          <h4 class="text-lg font-semibold mb-3">Client-side Code</h4>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Initialize ArusdataJS client
+const arusdata = new ArusdataClient({
+  endpoint: 'ws://localhost:8080/arusdata'
+});
+
+// Subscribe to user notifications
+let userId = 'user-123'; // In a real app, this would be the actual user ID
+
+function initializeNotifications() {
+  // Private channel for this user only
+  const userChannel = arusdata.subscribe(`private-user-${userId}`);
+  
+  // Listen for notification events
+  userChannel.bind('notification', (data) => {
+    showNotification(data);
+  });
+  
+  // Listen for unread count update
+  userChannel.bind('unread_update', (data) => {
+    updateUnreadBadge(data.count);
+  });
+  
+  // Public announcements channel
+  const announcements = arusdata.subscribe('announcements');
+  
+  announcements.bind('announcement', (data) => {
+    showAnnouncement(data);
+  });
+  
+  console.log('Notification system initialized');
+}
+
+// Connection handler
+arusdata.onConnection((socketId) => {
+  console.log('Connected to notification server');
+  
+  // Get authentication token for private channel
+  authenticatePrivateChannel(socketId, `private-user-${userId}`)
+    .then(() => {
+      initializeNotifications();
+    })
+    .catch(error => {
+      console.error('Authentication error:', error);
+    });
+});
+
+// Function to authenticate for private channel
+async function authenticatePrivateChannel(socketId, channelName) {
+  try {
+    const response = await fetch('/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        socket_id: socketId,
+        channel_name: channelName
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Authentication failed');
+    }
+    
+    const auth = await response.json();
+    
+    // Add auth token to channel
+    const channel = arusdata.subscribe(channelName);
+    channel.auth = auth.auth;
+    
+    return channel;
+  } catch (error) {
+    console.error('Error authenticating channel:', error);
+    throw error;
+  }
+}
+
+// Show notification
+function showNotification(data) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification ${data.type || 'info'}`;
+  
+  const title = document.createElement('div');
+  title.className = 'notification-title';
+  title.textContent = data.title;
+  
+  const message = document.createElement('div');
+  message.className = 'notification-message';
+  message.textContent = data.message;
+  
+  const time = document.createElement('div');
+  time.className = 'notification-time';
+  time.textContent = new Date(data.timestamp).toLocaleTimeString();
+  
+  notification.appendChild(title);
+  notification.appendChild(message);
+  notification.appendChild(time);
+  
+  // Add to notifications container
+  const container = document.getElementById('notifications-container');
+  container.prepend(notification);
+  
+  // Auto-remove after 5 seconds if it's a toast
+  if (data.isToast) {
+    setTimeout(() => {
+      notification.classList.add('fade-out');
+      setTimeout(() => {
+        notification.remove();
+      }, 500);
+    }, 5000);
+  }
+  
+  // Play sound if enabled
+  if (data.playSound !== false) {
+    playNotificationSound();
+  }
+}
+
+// Update unread badge
+function updateUnreadBadge(count) {
+  const badge = document.getElementById('notifications-badge');
+  
+  if (count > 0) {
+    badge.textContent = count > 99 ? '99+' : count;
+    badge.classList.remove('hidden');
+  } else {
+    badge.classList.add('hidden');
+  }
+}
+
+// Show announcement (system-wide notification)
+function showAnnouncement(data) {
+  const announcement = document.createElement('div');
+  announcement.className = 'announcement';
+  
+  const icon = document.createElement('i');
+  icon.className = 'fas fa-bullhorn';
+  
+  const content = document.createElement('div');
+  content.className = 'announcement-content';
+  content.textContent = data.message;
+  
+  announcement.appendChild(icon);
+  announcement.appendChild(content);
+  
+  // Add to announcements container
+  const container = document.getElementById('announcements-container');
+  container.appendChild(announcement);
+  
+  // Play sound
+  playNotificationSound();
+}</code></pre>
+          </div>
+
+          <h4 class="text-lg font-semibold mb-3">Server-side Code (Node.js)</h4>
+          <div class="bg-gray-800 rounded-md p-4">
+            <pre class="language-javascript m-0"><code>// Server-side code for sending notifications
+
+// Send notification to specific user
+function sendUserNotification(userId, notification) {
+  const channelName = `private-user-${userId}`;
+  
+  // Add timestamp if not present
+  if (!notification.timestamp) {
+    notification.timestamp = new Date().toISOString();
+  }
+  
+  // Send to user's private channel
+  channelsController.broadcastToChannel(
+    channelName,
+    'notification',
+    notification
+  );
+  
+  // Also update their unread count in database
+  updateUserUnreadCount(userId)
+    .then(newCount => {
+      // Send unread count update
+      channelsController.broadcastToChannel(
+        channelName,
+        'unread_update',
+        { count: newCount }
+      );
+    })
+    .catch(error => {
+      console.error(`Error updating unread count for user ${userId}:`, error);
+    });
+  
+  return true;
+}
+
+// Send system-wide announcement
+function sendAnnouncement(message, importance = 'normal') {
+  const announcement = {
+    message,
+    importance,
+    timestamp: new Date().toISOString()
+  };
+  
+  // Broadcast to public announcements channel
+  return channelsController.broadcastToChannel(
+    'announcements',
+    'announcement',
+    announcement
+  );
+}
+
+// Example usage in an API endpoint
+app.post('/api/notifications', authMiddleware, (req, res) => {
+  const { recipientId, title, message, type } = req.body;
+  
+  if (!recipientId || !message) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+  
+  const notification = {
+    title: title || 'New Notification',
+    message,
+    type: type || 'info',
+    isToast: true
+  };
+  
+  const sent = sendUserNotification(recipientId, notification);
+  
+  if (sent) {
+    res.status(200).json({ success: true });
+  } else {
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <h3 class="text-xl font-semibold">Use Cases</h3>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h4 class="font-semibold mb-2">Private Notifications</h4>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Pemberitahuan pesan baru</li>
+                <li>Notifikasi aktivitas akun</li>
+                <li>Pembaruan status pemesanan/pengiriman</li>
+                <li>Peringatan keamanan</li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h4 class="font-semibold mb-2">System Announcements</h4>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Pemeliharaan sistem yang akan datang</li>
+                <li>Fitur baru yang dirilis</li>
+                <li>Pengumuman penting ke semua pengguna</li>
+                <li>Peringatan darurat</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More examples would be included here -->
+
+    <div class="bg-primary-50 border border-primary-100 rounded-lg p-6 mb-12">
+      <h3 class="text-xl font-semibold text-primary-800 mb-4">Contoh Kode Lengkap</h3>
+      <p class="text-primary-700 mb-4">
+        Seluruh contoh kode lengkap tersedia di repository GitHub ArusdataJS. Anda dapat mengkloning repository,
+        dan menjalankan contoh-contoh ini di mesin lokal Anda.
+      </p>
+      <a href="https://github.com/yourusername/arusdata/tree/main/examples"
+        class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium">
+        <i class="fab fa-github mr-2"></i> Lihat Semua Contoh di GitHub
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-4 md:mb-0">
+          <span class="text-lg font-semibold">ArusdataJS</span>
+          <p class="text-sm text-gray-400 mt-1">Real-time messaging library for JavaScript</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="../index.html" class="text-gray-400 hover:text-white">Home</a>
+          <a href="getting-started.html" class="text-gray-400 hover:text-white">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-400 hover:text-white">API Reference</a>
+          <a href="examples.html" class="text-white">Examples</a>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="text-gray-400 hover:text-white">GitHub</a>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-markup.min.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+
+</html>

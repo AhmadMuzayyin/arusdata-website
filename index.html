@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArusdataJS - Real-time Messaging Library</title>
+  <meta name="description"
+    content="ArusdataJS adalah library JavaScript untuk komunikasi real-time yang ringan, mudah digunakan, dan tanpa dependency.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome (untuk ikon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prism.js untuk syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+  <!-- Kustom styles tambahan -->
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+
+    .code-window {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .window-control {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+          <a href="#getting-started"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Memulai</a>
+          <a href="#demo" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+          <a href="#docs" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+          <a href="https://github.com/AhmadMuzayyin/arusdata" target="_blank"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <i class="fab fa-github mr-1"></i> GitHub
+          </a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="#getting-started"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Memulai</a>
+        <a href="#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="https://github.com/AhmadMuzayyin/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary-600 to-secondary-600 py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 text-white mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Komunikasi Real-time Sederhana dan Handal
+          </h1>
+          <p class="text-xl mb-8 text-white text-opacity-90">
+            ArusdataJS adalah library JavaScript untuk membangun aplikasi real-time yang ringan, cepat, dan mudah
+            digunakan. Tanpa dependency eksternal.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#getting-started"
+              class="bg-white text-primary-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-md transition duration-200">
+              Mulai Sekarang
+            </a>
+            <a href="/demo/chat/"
+              class="bg-transparent hover:bg-white hover:text-primary-600 text-white border border-white px-6 py-3 rounded-lg font-medium transition duration-200">
+              Lihat Demo
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <div class="bg-gray-900 rounded-lg overflow-hidden code-window">
+            <div class="flex items-center bg-gray-800 px-4 py-2">
+              <div class="window-control bg-red-500"></div>
+              <div class="window-control bg-yellow-500"></div>
+              <div class="window-control bg-green-500"></div>
+              <div class="ml-2 text-white opacity-80 text-sm">arusdata-example.js</div>
+            </div>
+            <pre class="language-javascript m-0"><code class="text-sm">// Connect to ArusdataJS server
+const arusdata = new ArusdataClient({
+    endpoint: 'ws://your-server.com/arusdata'
+});
+
+// Subscribe to a channel
+const channel = arusdata.subscribe('my-channel');
+
+// Listen for events
+channel.bind('new-message', (data) => {
+    console.log(`New message: ${data.text}`);
+    displayMessage(data);
+});
+
+// Send a message
+channel.trigger('new-message', {
+    sender: 'John',
+    text: 'Hello world!'
+});</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-16">Fitur Utama</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-bolt text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Ringan & Cepat</h3>
+          <p class="text-gray-600">Ukuran library yang kecil (~10KB gzipped) dengan kinerja tinggi untuk aplikasi
+            real-time.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-plug text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Mudah Diintegrasikan</h3>
+          <p class="text-gray-600">API yang intuitif dan dokumentasi lengkap membuat integrasi menjadi sangat mudah.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-cubes text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Tanpa Dependency</h3>
+          <p class="text-gray-600">Tidak memerlukan library eksternal, mengurangi ukuran bundle aplikasi Anda.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-shield-alt text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Aman</h3>
+          <p class="text-gray-600">Dukungan otentikasi dan otorisasi untuk private channels.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-server text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Server Terintegrasi</h3>
+          <p class="text-gray-600">Server WebSocket Node.js yang siap pakai dan mudah dikonfigurasi.</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="bg-primary-100 text-primary-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+            <i class="fas fa-code text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Open Source</h3>
+          <p class="text-gray-600">Kode sumber terbuka dan tersedia di GitHub untuk dimodifikasi sesuai kebutuhan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started Section -->
+  <section id="getting-started" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Memulai dengan ArusdataJS</h2>
+
+      <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+        <div class="flex border-b">
+          <button class="px-6 py-3 font-medium border-b-2 border-primary-500 text-primary-600" id="tab-npm">NPM</button>
+          <button class="px-6 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700"
+            id="tab-cdn">CDN</button>
+          <button class="px-6 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700"
+            id="tab-download">Download</button>
+        </div>
+
+        <div class="py-6">
+          <div id="content-npm" class="tab-content block">
+            <div class="bg-gray-800 rounded-md p-4 mb-4">
+              <pre class="language-bash m-0"><code>npm install arusdata --save</code></pre>
+            </div>
+            <p class="mb-2 text-gray-600">Kemudian import dalam project:</p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>import ArusdataClient from 'arusdata';</code></pre>
+            </div>
+          </div>
+
+          <div id="content-cdn" class="tab-content hidden">
+            <div class="bg-gray-800 rounded-md p-4 mb-4">
+              <pre
+                class="language-html m-0"><code>&lt;script src="https://cdn.jsdelivr.net/npm/arusdata@0.1.0/dist/arusdata.min.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <p class="mb-2 text-gray-600">Akses melalui global variable:</p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>const arusdata = new ArusdataClient();</code></pre>
+            </div>
+          </div>
+
+          <div id="content-download" class="tab-content hidden">
+            <p class="mb-4 text-gray-600">Download file library langsung:</p>
+            <a href="https://github.com/AhmadMuzayyin/arusdata/releases"
+              class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium mb-4">Download
+              Latest</a>
+            <p class="mb-2 text-gray-600">Kemudian include dalam HTML:</p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre
+                class="language-html m-0"><code>&lt;script src="path/to/arusdata.min.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h3 class="text-2xl font-semibold mb-6">Quick Start Guide</h3>
+        <div class="bg-gray-800 rounded-lg overflow-hidden">
+          <pre class="language-javascript m-0"><code>// Inisialisasi client
+const arusdata = new ArusdataClient({
+  endpoint: 'ws://localhost:8080/arusdata'
+});
+
+// Subscribe ke channel
+const channel = arusdata.subscribe('chat');
+
+// Bind ke event
+channel.bind('message', (data) => {
+  console.log('Received message:', data);
+});
+
+// Publish event
+channel.trigger('message', {
+  sender: 'Username',
+  text: 'Hello, ArusdataJS!'
+});
+
+// Callback saat koneksi berhasil
+arusdata.onConnection((socketId) => {
+  console.log('Connected with socket ID:', socketId);
+});
+
+// Callback saat koneksi terputus
+arusdata.onDisconnection(() => {
+  console.log('Disconnected from server');
+});</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-8">Demo ArusdataJS</h2>
+      <p class="text-center text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+        Lihat ArusdataJS dalam aksi melalui demo aplikasi chat. Buka dalam beberapa tab browser untuk melihat komunikasi
+        real-time antar pengguna.
+      </p>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-gray-100 rounded-lg p-8 shadow-inner mb-8 w-full max-w-4xl">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="h-64 flex items-center justify-center bg-gray-50 border">
+              <img src="assets/images/chat-demo-preview.png" alt="ArusdataJS Chat Demo"
+                class="max-w-full max-h-full object-contain"
+                onerror="this.src='https://via.placeholder.com/800x450?text=Chat+Demo+Preview'">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Chat Application</h3>
+              <p class="text-gray-600 mb-4">
+                Aplikasi chat sederhana yang mendemonstrasikan kemampuan real-time messaging dari ArusdataJS. Fitur
+                meliputi multi-channel, username kustom, dan notifikasi status koneksi.
+              </p>
+              <a href="/demo/chat/"
+                class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium">
+                Buka Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-secondary-50 rounded-lg p-6 text-center max-w-2xl">
+          <h3 class="text-lg font-medium text-secondary-800 mb-2">Demo Server Info</h3>
+          <p class="text-secondary-600">
+            Demo ArusdataJS berjalan di server lokal Anda di <code
+              class="bg-white px-2 py-1 rounded">localhost:8080/arusdata</code>.
+            Pastikan server ArusdataJS berjalan sebelum mengakses demo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documentation Section -->
+  <section id="docs" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-8">Dokumentasi</h2>
+      <p class="text-center text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+        Pelajari cara menggunakan ArusdataJS melalui dokumentasi lengkap dan contoh kode.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="/getting-started.html"
+          class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="flex items-center mb-4">
+            <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+              <i class="fas fa-book text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Getting Started</h3>
+          </div>
+          <p class="text-gray-600">
+            Panduan lengkap untuk memulai dengan ArusdataJS. Instalasi, konfigurasi, dan contoh pertama.
+          </p>
+        </a>
+
+        <a href="/api-reference.html"
+          class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="flex items-center mb-4">
+            <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+              <i class="fas fa-code text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">API Reference</h3>
+          </div>
+          <p class="text-gray-600">
+            Dokumentasi API lengkap untuk client dan server ArusdataJS.
+          </p>
+        </a>
+
+        <a href="/examples.html"
+          class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+          <div class="flex items-center mb-4">
+            <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+              <i class="fas fa-laptop-code text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Examples</h3>
+          </div>
+          <p class="text-gray-600">
+            Berbagai contoh kode dan demo untuk membantu Anda memahami cara menggunakan ArusdataJS.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Perbandingan</h2>
+
+      <div class="overflow-x-auto mb-12">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr>
+              <th class="py-4 px-6 bg-gray-50 font-semibold text-sm uppercase border-b border-gray-200">Fitur</th>
+              <th
+                class="py-4 px-6 bg-gray-50 font-semibold text-sm uppercase border-b border-gray-200 text-primary-600">
+                ArusdataJS</th>
+              <th class="py-4 px-6 bg-gray-50 font-semibold text-sm uppercase border-b border-gray-200">Socket.IO</th>
+              <th class="py-4 px-6 bg-gray-50 font-semibold text-sm uppercase border-b border-gray-200">Pusher</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Ukuran Library</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">~10KB</td>
+              <td class="py-4 px-6 border-b border-gray-200">~67KB</td>
+              <td class="py-4 px-6 border-b border-gray-200">~40KB</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Self-hosted</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">✗</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Tanpa Dependency</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">✗</td>
+              <td class="py-4 px-6 border-b border-gray-200">✓</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Private Channels</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">✓</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Presence Channels</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">✓</td>
+              <td class="py-4 px-6 border-b border-gray-200">Limited</td>
+              <td class="py-4 px-6 border-b border-gray-200">✓</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Harga</td>
+              <td class="py-4 px-6 border-b border-gray-200 font-medium text-primary-600">Gratis</td>
+              <td class="py-4 px-6 border-b border-gray-200">Gratis</td>
+              <td class="py-4 px-6 border-b border-gray-200">Berbayar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Mulai Gunakan ArusdataJS Sekarang</h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto text-white text-opacity-90">
+        Buat aplikasi real-time Anda dengan ArusdataJS. Open source, mudah digunakan, dan ringan.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#getting-started"
+          class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium shadow-md transition duration-200">
+          Mulai Sekarang
+        </a>
+        <a href="https://github.com/AhmadMuzayyin/arusdata" target="_blank"
+          class="bg-transparent hover:bg-white hover:text-primary-600 text-white border border-white px-8 py-4 rounded-lg font-medium transition duration-200">
+          <i class="fab fa-github mr-2"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">ArusdataJS</h3>
+          <p class="text-gray-400">
+            Library JavaScript untuk komunikasi real-time yang ringan, cepat, dan mudah digunakan.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+            <li><a href="#getting-started" class="text-gray-400 hover:text-white">Getting Started</a></li>
+            <li><a href="#demo" class="text-gray-400 hover:text-white">Demo</a></li>
+            <li><a href="#docs" class="text-gray-400 hover:text-white">Docs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="/api-reference.html" class="text-gray-400 hover:text-white">API Reference</a></li>
+            <li><a href="/examples.html" class="text-gray-400 hover:text-white">Examples</a></li>
+            <li><a href="/faq.html" class="text-gray-400 hover:text-white">FAQ</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Release Notes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Connect</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://github.com/AhmadMuzayyin/arusdata" target="_blank"
+                class="text-gray-400 hover:text-white">
+                <i class="fab fa-github mr-2"></i> GitHub
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="fab fa-twitter mr-2"></i> Twitter
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="fas fa-envelope mr-2"></i> Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-markup.min.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release Notes - ArusdataJS Documentation</title>
+  <meta name="description" content="Catatan rilis dan perubahan ArusdataJS">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+          <div class="hidden md:flex ml-6 space-x-8">
+            <a href="../index.html#features"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+            <a href="../index.html#demo"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+            <a href="../index.html#docs"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+            <a href="https://github.com/yourusername/arusdata" target="_blank"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="getting-started.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">API
+            Reference</a>
+          <a href="examples.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Examples</a>
+          <a href="faq.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">FAQ</a>
+          <a href="release-notes.html"
+            class="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium">Release Notes</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="../index.html#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="../index.html#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="../index.html#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="getting-started.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Getting
+          Started</a>
+        <a href="api-reference.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">API
+          Reference</a>
+        <a href="examples.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Examples</a>
+        <a href="faq.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">FAQ</a>
+        <a href="release-notes.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-primary-600 bg-gray-50">Release Notes</a>
+        <a href="https://github.com/yourusername/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary-600 py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Release Notes</h1>
+      <p class="text-xl text-white text-opacity-90 max-w-3xl">
+        Catatan perubahan dan pembaruan ArusdataJS untuk setiap versi.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-12">
+        <div class="bg-primary-50 rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-bold text-primary-800 mb-3">Penjelasan Versioning</h2>
+          <p class="text-primary-700">
+            ArusdataJS mengikuti aturan <strong>Semantic Versioning</strong> (SemVer):
+          </p>
+          <ul class="list-disc pl-6 mt-2 space-y-1 text-primary-700">
+            <li><strong>Major version</strong> (x.0.0) - Perubahan yang tidak kompatibel dengan versi sebelumnya</li>
+            <li><strong>Minor version</strong> (0.x.0) - Penambahan fitur yang kompatibel dengan versi sebelumnya</li>
+            <li><strong>Patch version</strong> (0.0.x) - Bug fixes dan perbaikan kecil yang kompatibel dengan versi
+              sebelumnya</li>
+          </ul>
+        </div>
+
+        <!-- Latest version -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-10">
+          <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
+            <div class="flex justify-between items-center">
+              <h2 class="text-xl font-bold text-white">Version 0.1.0 (Current)</h2>
+              <span class="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-medium">Latest</span>
+            </div>
+            <p class="text-blue-100 mt-1">Released on March 26, 2025</p>
+          </div>
+          <div class="p-6">
+            <p class="mb-4 text-gray-700">
+              Initial public release of ArusdataJS, providing core functionality for real-time messaging.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-2">Features</h3>
+            <ul class="list-disc pl-6 mb-4 space-y-1 text-gray-700">
+              <li>WebSocket server for real-time communication</li>
+              <li>Client-side JavaScript library for browser integration</li>
+              <li>Channel-based communication system</li>
+              <li>Event-driven messaging model</li>
+              <li>Automatic reconnection with configurable intervals</li>
+              <li>Private channels with authentication</li>
+              <li>Presence channels for user status tracking</li>
+              <li>REST API for monitoring and external integrations</li>
+            </ul>
+
+            <h3 class="text-lg font-semibold mb-2">Documentation</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li>Getting Started guide</li>
+              <li>API Reference</li>
+              <li>Example implementations</li>
+              <li>Interactive demos</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Future releases (Roadmap) -->
+        <h2 class="text-2xl font-bold mb-6">Roadmap</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-100 px-6 py-4 border-l-4 border-primary-500">
+              <h3 class="text-lg font-semibold text-gray-800">Version 0.2.0 (Planned)</h3>
+              <p class="text-gray-600 text-sm mt-1">Expected: Q2 2025</p>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-2">Planned Features</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-gray-700">
+                <li>Enhanced server-side statistics and monitoring dashboard</li>
+                <li>Horizontal scaling support with Redis adapter</li>
+                <li>Message persistence for offline clients</li>
+                <li>Client libraries for React, Vue, and Angular</li>
+                <li>Improved TypeScript support with full type definitions</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-100 px-6 py-4 border-l-4 border-primary-500">
+              <h3 class="text-lg font-semibold text-gray-800">Version 0.3.0 (Planned)</h3>
+              <p class="text-gray-600 text-sm mt-1">Expected: Q3 2025</p>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-2">Planned Features</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-gray-700">
+                <li>End-to-end encryption for private messages</li>
+                <li>Support for WebRTC integration</li>
+                <li>Client libraries for mobile platforms (React Native, Flutter)</li>
+                <li>Advanced authentication methods (OAuth, JWT)</li>
+                <li>Rate limiting and throttling features</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-100 px-6 py-4 border-l-4 border-primary-500">
+              <h3 class="text-lg font-semibold text-gray-800">Version 1.0.0 (Planned)</h3>
+              <p class="text-gray-600 text-sm mt-1">Expected: Q4 2025</p>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold mb-2">Planned Features</h4>
+              <ul class="list-disc pl-6 mb-4 space-y-1 text-gray-700">
+                <li>Stable API with long-term support</li>
+                <li>Complete documentation and usage examples</li>
+                <li>Performance optimizations for high-load scenarios</li>
+                <li>Advanced analytics and metrics</li>
+                <li>Enterprise features (SSO integration, audit logging)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="bg-white rounded-lg shadow-md p-6 inline-block">
+          <h3 class="text-lg font-semibold mb-2">Contribute to Development</h3>
+          <p class="text-gray-700 mb-4">
+            ArusdataJS is an open source project and welcomes contributions from the community.
+            Help us shape the future of real-time messaging.
+          </p>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium">
+            <i class="fab fa-github mr-2"></i> Join us on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-4 md:mb-0">
+          <span class="text-lg font-semibold">ArusdataJS</span>
+          <p class="text-sm text-gray-400 mt-1">Real-time messaging library for JavaScript</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="../index.html" class="text-gray-400 hover:text-white">Home</a>
+          <a href="getting-started.html" class="text-gray-400 hover:text-white">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-400 hover:text-white">API Reference</a>
+          <a href="examples.html" class="text-gray-400 hover:text-white">Examples</a>
+          <a href="faq.html" class="text-gray-400 hover:text-white">FAQ</a>
+          <a href="release-notes.html" class="text-white">Release Notes</a>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="text-gray-400 hover:text-white">GitHub</a>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+
+</html>

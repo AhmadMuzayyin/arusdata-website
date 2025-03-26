@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started - ArusdataJS Documentation</title>
+  <meta name="description"
+    content="Panduan lengkap untuk memulai dengan ArusdataJS, library JavaScript untuk komunikasi real-time">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Prism.js untuk syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="/index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+          <div class="hidden md:flex ml-6 space-x-8">
+            <a href="/index.html#features"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+            <a href="/index.html#demo"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+            <a href="/index.html#docs"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+            <a href="https://github.com/yourusername/arusdata" target="_blank"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="getting-started.html"
+            class="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">API
+            Reference</a>
+          <a href="examples.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Examples</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/index.html#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="/index.html#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="/index.html#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="getting-started.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-primary-600 bg-gray-50">Getting Started</a>
+        <a href="api-reference.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">API
+          Reference</a>
+        <a href="examples.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Examples</a>
+        <a href="https://github.com/yourusername/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary-600 py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Getting Started with ArusdataJS</h1>
+      <p class="text-xl text-white text-opacity-90 max-w-3xl">
+        Panduan lengkap untuk memulai dengan ArusdataJS, dari instalasi hingga contoh penggunaan dasar.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <div class="lg:w-64 lg:shrink-0 mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+          <h3 class="text-lg font-semibold mb-4">Daftar Isi</h3>
+          <ul class="space-y-2">
+            <li><a href="#installation" class="text-primary-600 hover:text-primary-800">Instalasi</a></li>
+            <li><a href="#configuration" class="text-primary-600 hover:text-primary-800">Konfigurasi</a></li>
+            <li><a href="#basic-usage" class="text-primary-600 hover:text-primary-800">Penggunaan Dasar</a></li>
+            <li><a href="#channels" class="text-primary-600 hover:text-primary-800">Channels</a></li>
+            <li><a href="#events" class="text-primary-600 hover:text-primary-800">Events</a></li>
+            <li><a href="#authentication" class="text-primary-600 hover:text-primary-800">Authentication</a></li>
+            <li><a href="#error-handling" class="text-primary-600 hover:text-primary-800">Penanganan Error</a></li>
+            <li><a href="#best-practices" class="text-primary-600 hover:text-primary-800">Praktik Terbaik</a></li>
+            <li><a href="#next-steps" class="text-primary-600 hover:text-primary-800">Langkah Selanjutnya</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:flex-grow">
+        <section id="installation" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Instalasi</h2>
+          <p class="mb-6">
+            Ada beberapa cara untuk menginstal ArusdataJS dalam proyek Anda. Pilih metode yang paling sesuai dengan
+            kebutuhan Anda.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Melalui NPM</h3>
+          <p class="mb-3">
+            Metode yang direkomendasikan untuk proyek Node.js atau aplikasi yang menggunakan build system seperti
+            Webpack.
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-bash m-0"><code>npm install arusdata --save</code></pre>
+          </div>
+          <p class="mb-6">
+            Kemudian, Anda dapat mengimportnya dalam kode Anda:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// ESM
+import ArusdataClient from 'arusdata';
+
+// CommonJS
+const ArusdataClient = require('arusdata');</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Melalui CDN</h3>
+          <p class="mb-3">
+            Cara tercepat untuk mulai menggunakan ArusdataJS adalah melalui CDN. Cukup tambahkan tag script ke HTML
+            Anda:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre
+              class="language-html m-0"><code>&lt;script src="https://cdn.jsdelivr.net/npm/arusdata@0.1.0/dist/arusdata.min.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+          <p class="mb-6">
+            Ini akan mengekspos <code>ArusdataClient</code> sebagai variabel global yang dapat Anda gunakan di script
+            Anda.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Download Manual</h3>
+          <p class="mb-3">
+            Anda juga dapat mengunduh file library langsung dari GitHub release:
+          </p>
+          <div class="mb-6">
+            <a href="https://github.com/yourusername/arusdata/releases" target="_blank"
+              class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md font-medium">
+              Download Latest Release
+            </a>
+          </div>
+          <p class="mb-3">
+            Kemudian tambahkan ke HTML Anda:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre
+              class="language-html m-0"><code>&lt;script src="path/to/arusdata.min.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="configuration" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Konfigurasi</h2>
+          <p class="mb-6">
+            Setelah instalasi, Anda perlu mengkonfigurasi ArusdataJS untuk terhubung ke server Anda.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Opsi Konfigurasi</h3>
+          <p class="mb-3">
+            Berikut adalah opsi konfigurasi yang tersedia saat menginisialisasi ArusdataClient:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>const arusdata = new ArusdataClient({
+    // URL WebSocket server (wajib)
+    endpoint: 'ws://localhost:8080/arusdata',
+    
+    // Interval reconnect dalam milidetik (opsional, default: 3000)
+    reconnectInterval: 3000,
+    
+    // Otomatis reconnect saat koneksi terputus (opsional, default: true)
+    autoReconnect: true,
+    
+    // Otomatis connect saat inisialisasi (opsional, default: true)
+    autoConnect: true
+});</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Server Configuration</h3>
+          <p class="mb-3">
+            Untuk menggunakan ArusdataJS, Anda perlu menjalankan server ArusdataJS. Server ini menangani koneksi
+            WebSocket dan distribusi pesan.
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Instalasi server
+npm install arusdata-server --save
+
+// Menjalankan server
+const ArusdataServer = require('arusdata-server');
+const server = new ArusdataServer({
+  port: 8080,
+  path: '/arusdata'
+});</code></pre>
+          </div>
+          <p class="mb-3">
+            Secara default, server akan berjalan di port 8080 dan menyediakan endpoint WebSocket di /arusdata. Anda
+            dapat mengubah konfigurasi ini sesuai kebutuhan.
+          </p>
+        </section>
+
+        <section id="basic-usage" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Penggunaan Dasar</h2>
+          <p class="mb-6">
+            Mari kita mulai dengan contoh penggunaan dasar ArusdataJS.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Menginisialisasi Koneksi</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Inisialisasi client
+const arusdata = new ArusdataClient({
+  endpoint: 'ws://localhost:8080/arusdata'
+});
+
+// Menangani event koneksi berhasil
+arusdata.onConnection((socketId) => {
+  console.log('Connected with socket ID:', socketId);
+  // Lakukan sesuatu saat koneksi berhasil
+});
+
+// Menangani event koneksi terputus
+arusdata.onDisconnection(() => {
+  console.log('Disconnected from server');
+  // Lakukan sesuatu saat koneksi terputus
+});</code></pre>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                  <strong>Catatan:</strong> Pastikan server ArusdataJS berjalan sebelum mencoba menghubungkan klien.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Memutuskan Koneksi Secara Manual</h3>
+          <p class="mb-3">
+            Jika perlu, Anda bisa memutuskan koneksi secara manual:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Memutuskan koneksi
+arusdata.disconnect();
+
+// Menghubungkan kembali
+arusdata.connect();</code></pre>
+          </div>
+        </section>
+
+        <section id="channels" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Channels</h2>
+          <p class="mb-6">
+            Channels adalah konsep penting dalam ArusdataJS yang memungkinkan pengelompokan komunikasi berdasarkan topik
+            atau kategori tertentu.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Subscribe ke Channel</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Subscribe ke channel
+const channel = arusdata.subscribe('chat-room');
+
+// Anda juga bisa menambahkan callback saat subscription berhasil
+channel.onSubscription((data) => {
+  console.log('Subscribed to channel with data:', data);
+});</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Unsubscribe dari Channel</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Unsubscribe dari channel
+arusdata.unsubscribe('chat-room');</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Tipe Channel</h3>
+          <p class="mb-3">
+            ArusdataJS mendukung beberapa tipe channel:
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li>
+              <strong>Public Channels</strong> - Dapat diakses oleh semua klien tanpa otentikasi.
+              <div class="bg-gray-800 rounded-md p-4 mt-2">
+                <pre
+                  class="language-javascript m-0"><code>const publicChannel = arusdata.subscribe('public-channel');</code></pre>
+              </div>
+            </li>
+            <li class="mt-4">
+              <strong>Private Channels</strong> - Memerlukan otentikasi, nama channel dimulai dengan "private-".
+              <div class="bg-gray-800 rounded-md p-4 mt-2">
+                <pre class="language-javascript m-0"><code>// Request auth token dari server
+fetch('/auth', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ 
+      channel_name: 'private-channel', 
+      socket_id: arusdata.getSocketId() 
+  })
+})
+.then(response => response.json())
+.then(data => {
+  // Subscribe ke private channel dengan token auth
+  const privateChannel = arusdata.subscribe('private-channel');
+  privateChannel.auth = data.auth;
+});</code></pre>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="events" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Events</h2>
+          <p class="mb-6">
+            Events adalah cara berkomunikasi melalui channels. Anda dapat mengirim dan menerima events dengan data
+            terkait.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Mengirim Events</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Cara 1: Melalui channel
+const channel = arusdata.subscribe('chat-room');
+channel.trigger('new-message', {
+  sender: 'John',
+  text: 'Hello world!',
+  timestamp: new Date().toISOString()
+});
+
+// Cara 2: Melalui client
+arusdata.publish('chat-room', 'new-message', {
+  sender: 'John',
+  text: 'Hello world!',
+  timestamp: new Date().toISOString()
+});</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Menerima Events</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Bind ke event tertentu
+channel.bind('new-message', (data) => {
+  console.log(`New message from ${data.sender}: ${data.text}`);
+  // Lakukan sesuatu dengan data, misalnya update UI
+  displayMessage(data);
+});
+
+// Anda bisa bind ke beberapa event
+channel.bind('user-typing', (data) => {
+  console.log(`${data.username} is typing...`);
+  showTypingIndicator(data.username);
+});</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Unbinding Events</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Referensi ke callback
+const messageCallback = (data) => {
+  console.log(`New message from ${data.sender}: ${data.text}`);
+};
+
+// Bind callback
+channel.bind('new-message', messageCallback);
+
+// Unbind callback tertentu
+channel.unbind('new-message', messageCallback);
+
+// Atau unbind semua callback untuk event tertentu
+// channel.unbind('new-message');</code></pre>
+          </div>
+        </section>
+
+        <section id="authentication" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Authentication</h2>
+          <p class="mb-6">
+            ArusdataJS mendukung otentikasi untuk private channels, memungkinkan Anda mengontrol akses ke channels
+            tertentu.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Server-side Authentication</h3>
+          <p class="mb-3">
+            Pada sisi server, Anda perlu mengimplementasikan endpoint untuk menghasilkan token otentikasi:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Contoh menggunakan Express
+app.post('/auth', express.json(), (req, res) => {
+  const { channel_name, socket_id } = req.body;
+  
+  if (!channel_name || !socket_id) {
+      return res.status(400).json({ error: 'Missing required parameters' });
+  }
+  
+  // Validasi apakah user memiliki akses ke channel
+  if (!userHasAccessToChannel(req.user, channel_name)) {
+      return res.status(403).json({ error: 'Access denied' });
+  }
+  
+  // Hasilkan signature untuk channel privat
+  const stringToSign = `${socket_id}:${channel_name}`;
+  const signature = crypto
+      .createHmac('sha256', config.authSecret)
+      .update(stringToSign)
+      .digest('hex');
+  
+  res.status(200).json({
+      auth: signature
+  });
+});</code></pre>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-3">Client-side Authentication</h3>
+          <p class="mb-3">
+            Pada sisi client, Anda perlu mendapatkan token otentikasi sebelum berlangganan private channel:
+          </p>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Fungsi helper untuk otentikasi channel
+async function subscribeToPrivateChannel(channelName) {
+  try {
+      // Dapatkan socket ID
+      const socketId = arusdata.getSocketId();
+      
+      // Request auth token dari server
+      const response = await fetch('/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+              channel_name: channelName, 
+              socket_id: socketId 
+          })
+      });
+      
+      const data = await response.json();
+      
+      if (!data.auth) {
+          throw new Error('Authentication failed');
+      }
+      
+      // Subscribe ke private channel dengan token auth
+      const channel = arusdata.subscribe(channelName);
+      channel.auth = data.auth;
+      
+      return channel;
+  } catch (error) {
+      console.error('Error subscribing to private channel:', error);
+      throw error;
+  }
+}
+
+// Penggunaan
+subscribeToPrivateChannel('private-chat')
+  .then(channel => {
+      console.log('Subscribed to private channel');
+      // Bind ke events
+      channel.bind('message', handleMessage);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });</code></pre>
+          </div>
+        </section>
+
+        <section id="error-handling" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Penanganan Error</h2>
+          <p class="mb-6">
+            Penting untuk menangani error dengan benar dalam aplikasi real-time untuk memastikan user experience yang
+            baik.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-3">Tipe Error Umum</h3>
+          <ul class="list-disc pl-6 mb-6 space-y-2">
+            <li><strong>Connection Errors</strong> - Terjadi saat gagal terhubung ke server</li>
+            <li><strong>Authentication Errors</strong> - Terjadi saat otentikasi private channel gagal</li>
+            <li><strong>Subscription Errors</strong> - Terjadi saat gagal berlangganan channel</li>
+            <li><strong>Publish Errors</strong> - Terjadi saat gagal mempublikasikan pesan</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mb-3">Strategi Penanganan Error</h3>
+          <div class="bg-gray-800 rounded-md p-4 mb-6">
+            <pre class="language-javascript m-0"><code>// Menggunakan try-catch untuk penanganan error
+try {
+  const channel = arusdata.subscribe('chat');
+  
+  // Coba publish pesan
+  const success = channel.trigger('message', { text: 'Hello' });
+  
+  if (!success) {
+      // Handle publish gagal
+      console.error('Failed to publish message');
+  }
+} catch (error) {
+  console.error('Error:', error);
+  // Tampilkan pesan error ke user
+  showErrorToUser('Gagal terhubung ke server chat');
+}
+
+// Error handling untuk koneksi
+    arusdata.onDisconnection(() => {
+        console.log('Disconnected from server');
+        
+        // Update UI untuk menampilkan status disconnected
+        updateConnectionStatus('disconnected');
+        
+        // Tampilkan pesan ke user
+        showNotification('Koneksi terputus. Mencoba menghubungkan kembali...');
+    });</code></pre>
+          </div>
+        </section>
+
+        <section id="best-practices" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Praktik Terbaik</h2>
+          <p class="mb-6">
+            Berikut beberapa praktik terbaik saat menggunakan ArusdataJS.
+          </p>
+
+          <div class="space-y-6">
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">Manajemen Koneksi yang Efisien</h3>
+              <p class="text-blue-700">
+                Buat satu instance ArusdataClient dan gunakan di seluruh aplikasi Anda. Menginisialisasi
+                beberapa koneksi dapat menyebabkan overhead dan masalah performa.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">Membersihkan Event Listeners</h3>
+              <p class="text-blue-700">
+                Jangan lupa untuk menggunakan <code>unbind()</code> untuk menghapus event listeners yang
+                tidak lagi dibutuhkan, terutama saat komponen atau halaman dihancurkan.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">Gunakan Caching untuk Data</h3>
+              <p class="text-blue-700">
+                Untuk data yang jarang berubah, pertimbangkan untuk cache data dan gunakan update real-time
+                hanya untuk perubahan.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">Optimalkan Ukuran Data</h3>
+              <p class="text-blue-700">
+                Kirim hanya data yang diperlukan dalam event. Hindari mengirim seluruh objek besar jika
+                hanya sebagian kecil yang berubah.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">Perhatikan Keamanan</h3>
+              <p class="text-blue-700">
+                Selalu gunakan private channels untuk data sensitif. Validasi data di server sebelum
+                broadcast ke klien lain.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="next-steps" class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Langkah Selanjutnya</h2>
+          <p class="mb-6">
+            Sekarang Anda telah mempelajari dasar-dasar ArusdataJS, berikut adalah beberapa sumber daya untuk
+            memperdalam pemahaman Anda:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <a href="api-reference.html"
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+                  <i class="fas fa-code text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold">API Reference</h3>
+              </div>
+              <p class="text-gray-600">
+                Dokumentasi API lengkap untuk client dan server ArusdataJS.
+              </p>
+            </a>
+
+            <a href="examples.html"
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition duration-200">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
+                  <i class="fas fa-laptop-code text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold">Examples</h3>
+              </div>
+              <p class="text-gray-600">
+                Berbagai contoh kode dan demo untuk membantu Anda memahami cara menggunakan ArusdataJS.
+              </p>
+            </a>
+          </div>
+
+          <p class="mb-4">
+            Untuk pertanyaan lebih lanjut atau dukungan, kunjungi:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><a href="https://github.com/yourusername/arusdata/issues" target="_blank"
+                class="text-primary-600 hover:text-primary-800">GitHub Issues</a> - untuk melaporkan bug atau meminta
+              fitur baru</li>
+            <li><a href="https://github.com/yourusername/arusdata/discussions" target="_blank"
+                class="text-primary-600 hover:text-primary-800">Discussions</a> - untuk diskusi dan pertanyaan umum</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-4 md:mb-0">
+          <span class="text-lg font-semibold">ArusdataJS</span>
+          <p class="text-sm text-gray-400 mt-1">Real-time messaging library for JavaScript</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="/index.html" class="text-gray-400 hover:text-white">Home</a>
+          <a href="getting-started.html" class="text-white">Docs</a>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="text-gray-400 hover:text-white">GitHub</a>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-markup.min.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+
+</html>

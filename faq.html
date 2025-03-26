@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - ArusdataJS Documentation</title>
+  <meta name="description" content="Pertanyaan yang sering diajukan tentang ArusdataJS, library real-time messaging">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Prism.js untuk syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="/index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+          <div class="hidden md:flex ml-6 space-x-8">
+            <a href="/index.html#features"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+            <a href="/index.html#demo"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+            <a href="/index.html#docs"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+            <a href="https://github.com/yourusername/arusdata" target="_blank"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="getting-started.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">API
+            Reference</a>
+          <a href="examples.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Examples</a>
+          <a href="faq.html"
+            class="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium">FAQ</a>
+          <a href="release-notes.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Release Notes</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/index.html#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="/index.html#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="/index.html#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="getting-started.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Getting
+          Started</a>
+        <a href="api-reference.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">API
+          Reference</a>
+        <a href="examples.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Examples</a>
+        <a href="faq.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary-600 bg-gray-50">FAQ</a>
+        <a href="release-notes.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Release
+          Notes</a>
+        <a href="https://github.com/yourusername/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary-600 py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h1>
+      <p class="text-xl text-white text-opacity-90 max-w-3xl">
+        Jawaban untuk pertanyaan yang sering diajukan tentang ArusdataJS.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-4xl mx-auto space-y-10">
+      <!-- General Questions -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Pertanyaan Umum</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apa itu ArusdataJS?</h3>
+            <p class="text-gray-700">
+              ArusdataJS adalah library JavaScript untuk komunikasi real-time yang ringan, cepat, dan mudah digunakan.
+              Library ini memungkinkan developer untuk dengan mudah menambahkan fitur real-time seperti chat,
+              notifikasi,
+              dan pembaruan data langsung ke aplikasi web dan mobile.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS gratis untuk digunakan?</h3>
+            <p class="text-gray-700">
+              Ya, ArusdataJS adalah open source dan gratis untuk digunakan. Library ini dirilis di bawah lisensi MIT,
+              yang memungkinkan penggunaan untuk proyek komersial dan non-komersial tanpa biaya.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apa perbedaan ArusdataJS dengan Socket.IO atau
+              Pusher?</h3>
+            <p class="text-gray-700">
+              ArusdataJS menawarkan solusi yang lebih ringan dan sederhana dibandingkan Socket.IO, dengan fokus pada
+              kemudahan penggunaan
+              dan performa tinggi. Dibandingkan dengan Pusher, ArusdataJS bisa di-host sendiri (self-hosted) dan tidak
+              memerlukan
+              biaya langganan. Namun, ArusdataJS memiliki fitur yang mirip seperti channels, event-based messaging, dan
+              authentication.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Questions -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Pertanyaan Teknis</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Bagaimana ArusdataJS menangani koneksi yang
+              terputus?</h3>
+            <p class="text-gray-700 mb-3">
+              ArusdataJS memiliki mekanisme reconnect otomatis yang akan mencoba menghubungkan kembali jika koneksi
+              terputus.
+              Anda bisa mengatur interval reconnect melalui opsi konfigurasi:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>const arusdata = new ArusdataClient({
+  endpoint: 'ws://localhost:8080/arusdata',
+  reconnectInterval: 5000, // Coba reconnect setiap 5 detik
+  autoReconnect: true      // Aktifkan reconnect otomatis
+});</code></pre>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS mendukung SSL/TLS?</h3>
+            <p class="text-gray-700">
+              Ya, ArusdataJS mendukung koneksi WebSocket aman melalui WSS (WebSocket Secure). Untuk menggunakan koneksi
+              aman,
+              cukup gunakan protokol "wss://" di URL endpoint saat inisialisasi client:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>const arusdata = new ArusdataClient({
+  endpoint: 'wss://your-server.com/arusdata'
+});</code></pre>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Berapa banyak koneksi yang bisa ditangani server
+              ArusdataJS?</h3>
+            <p class="text-gray-700">
+              Jumlah koneksi yang bisa ditangani tergantung pada kapasitas server dan konfigurasi sistem operasi.
+              Pada umumnya, sebuah server dengan spesifikasi standar dapat menangani ribuan koneksi secara bersamaan.
+              Untuk skala yang lebih besar, ArusdataJS bisa dikonfigurasi dengan load balancer dan multiple server
+              instances.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Bagaimana cara mengotentikasi pengguna untuk private
+              channels?</h3>
+            <p class="text-gray-700 mb-3">
+              Private channels menggunakan sistem otentikasi berbasis token. Server membuat token berdasarkan socket ID
+              dan nama channel,
+              dan client harus memberikan token ini saat berlangganan ke private channel:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>// Client-side
+async function subscribeToPrivateChannel(channelName) {
+  // Dapatkan token autentikasi dari server
+  const response = await fetch('/auth', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      channel_name: channelName, 
+      socket_id: arusdata.getSocketId() 
+    })
+  });
+  
+  const data = await response.json();
+  
+  // Subscribe ke private channel
+  const channel = arusdata.subscribe(channelName);
+  channel.auth = data.auth;
+  
+  return channel;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS mendukung horizontal scaling?</h3>
+            <p class="text-gray-700">
+              Ya, ArusdataJS bisa dikonfigurasikan untuk bekerja dengan arsitektur terdistribusi. Untuk
+              mengimplementasikan horizontal scaling,
+              Anda perlu menggunakan adapter penyimpanan eksternal seperti Redis untuk mengelola shared state antara
+              server instances.
+              Dokumentasi lebih detail tentang konfigurasi ini tersedia di GitHub repository.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usage Questions -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Penggunaan</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS bekerja di semua browser?</h3>
+            <p class="text-gray-700">
+              ArusdataJS menggunakan WebSocket API yang didukung oleh semua browser modern. Secara khusus, ArusdataJS
+              mendukung:
+            </p>
+            <ul class="list-disc pl-6 mt-2 space-y-1 text-gray-700">
+              <li>Chrome 16+</li>
+              <li>Firefox 11+</li>
+              <li>Safari 7+</li>
+              <li>Edge 12+</li>
+              <li>Opera 12.1+</li>
+              <li>iOS Safari 6.0+</li>
+              <li>Android Browser 4.4+</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS bisa digunakan dengan
+              React/Vue/Angular?</h3>
+            <p class="text-gray-700">
+              Tentu, ArusdataJS bisa digunakan dengan framework JavaScript apapun. Library ini tidak memiliki
+              ketergantungan khusus
+              dan bisa diintegrasikan dengan mudah ke project React, Vue, Angular, atau framework lainnya.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Bagaimana cara menggunakan ArusdataJS dengan Node.js
+              di backend?</h3>
+            <p class="text-gray-700 mb-3">
+              Server ArusdataJS berjalan di atas Node.js. Anda bisa menginstall server menggunakan npm:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 mb-3">
+              <pre class="language-bash m-0"><code>npm install arusdata-server --save</code></pre>
+            </div>
+            <p class="text-gray-700 mb-3">
+              Kemudian jalankan server di aplikasi Node.js Anda:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4">
+              <pre class="language-javascript m-0"><code>const ArusdataServer = require('arusdata-server');
+
+const server = new ArusdataServer({
+  port: 8080,
+  path: '/arusdata'
+});
+
+// Gunakan dengan Express yang sudah ada
+const express = require('express');
+const http = require('http');
+const app = express();
+const httpServer = http.createServer(app);
+
+const arusdata = new ArusdataServer({
+  server: httpServer,
+  path: '/arusdata'
+});</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Questions -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Pertanyaan Lainnya</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Bagaimana cara berkontribusi ke proyek ArusdataJS?
+            </h3>
+            <p class="text-gray-700">
+              Kami sangat menghargai kontribusi dari komunitas. Anda bisa berkontribusi dengan beberapa cara:
+            </p>
+            <ul class="list-disc pl-6 mt-2 space-y-1 text-gray-700">
+              <li>Melaporkan bug atau mengusulkan fitur baru melalui GitHub Issues</li>
+              <li>Memperbaiki bug atau mengimplementasikan fitur dengan mengirimkan Pull Request</li>
+              <li>Memperbaiki atau menambahkan dokumentasi</li>
+              <li>Berbagi pengalaman dan contoh penggunaan ArusdataJS</li>
+            </ul>
+            <p class="text-gray-700 mt-3">
+              Silakan kunjungi <a href="https://github.com/yourusername/arusdata/blob/main/CONTRIBUTING.md"
+                class="text-primary-600 hover:text-primary-800">panduan kontribusi</a> untuk informasi lebih lanjut.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Dimana saya bisa mendapatkan bantuan jika mengalami
+              masalah?</h3>
+            <p class="text-gray-700">
+              Anda bisa mendapatkan bantuan melalui beberapa channel:
+            </p>
+            <ul class="list-disc pl-6 mt-2 space-y-1 text-gray-700">
+              <li>GitHub Issues untuk melaporkan bug atau masalah</li>
+              <li>GitHub Discussions untuk pertanyaan umum dan diskusi</li>
+              <li>Dokumentasi online yang tersedia di website ini</li>
+              <li>Community forum (segera hadir)</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-primary-700 mb-2">Apakah ArusdataJS cocok untuk aplikasi produksi?
+            </h3>
+            <p class="text-gray-700">
+              Ya, ArusdataJS dirancang untuk digunakan dalam aplikasi produksi. Namun, perlu diingat bahwa proyek ini
+              masih dalam
+              tahap pengembangan aktif. Kami merekomendasikan untuk melakukan pengujian menyeluruh sebelum menggunakan
+              pada aplikasi produksi
+              dengan skala besar. Kami juga selalu menerima feedback untuk meningkatkan stabilitas dan performa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="bg-primary-50 border border-primary-100 rounded-lg p-6 text-center">
+        <h3 class="text-lg font-semibold text-primary-800 mb-2">Masih memiliki pertanyaan?</h3>
+        <p class="text-primary-700 mb-4">
+          Jika Anda tidak menemukan jawaban untuk pertanyaan Anda di sini, silakan ajukan pertanyaan di GitHub
+          Discussions.
+        </p>
+        <a href="https://github.com/yourusername/arusdata/discussions" target="_blank"
+          class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium">
+          <i class="fab fa-github mr-2"></i> Tanya di GitHub Discussions
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-4 md:mb-0">
+          <span class="text-lg font-semibold">ArusdataJS</span>
+          <p class="text-sm text-gray-400 mt-1">Real-time messaging library for JavaScript</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="/index.html" class="text-gray-400 hover:text-white">Home</a>
+          <a href="getting-started.html" class="text-gray-400 hover:text-white">Getting Started</a>
+          <a href="api-reference.html" class="text-gray-400 hover:text-white">API Reference</a>
+          <a href="examples.html" class="text-gray-400 hover:text-white">Examples</a>
+          <a href="faq.html" class="text-white">FAQ</a>
+          <a href="release-notes.html" class="text-gray-400 hover:text-white">Release Notes</a>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="text-gray-400 hover:text-white">GitHub</a>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+
+</html>

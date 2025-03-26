@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference - ArusdataJS Documentation</title>
+  <meta name="description" content="Dokumentasi API lengkap untuk library ArusdataJS">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Prism.js untuk syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+  <!-- Konfigurasi Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e3f2fd',
+              100: '#bbdefb',
+              200: '#90caf9',
+              300: '#64b5f6',
+              400: '#42a5f5',
+              500: '#1e88e5',
+              600: '#1976d2',
+              700: '#1565c0',
+              800: '#0d47a1',
+              900: '#0a3880',
+            },
+            secondary: {
+              50: '#e0f7fa',
+              100: '#b2ebf2',
+              200: '#80deea',
+              300: '#4dd0e1',
+              400: '#26c6da',
+              500: '#00acc1',
+              600: '#0097a7',
+              700: '#00838f',
+              800: '#006064',
+              900: '#004d40',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-2xl font-bold">ArusdataJS</span>
+          </a>
+          <div class="hidden md:flex ml-6 space-x-8">
+            <a href="../index.html#features"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Fitur</a>
+            <a href="../index.html#demo"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Demo</a>
+            <a href="../index.html#docs"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Dokumentasi</a>
+            <a href="https://github.com/yourusername/arusdata" target="_blank"
+              class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="getting-started.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Getting Started</a>
+          <a href="api-reference.html"
+            class="text-primary-600 border-b-2 border-primary-600 px-3 py-2 text-sm font-medium">API Reference</a>
+          <a href="examples.html"
+            class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium">Examples</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button type="button" class="bg-white p-2 rounded-md text-gray-400 hover:text-gray-500"
+            id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="../index.html#features"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Fitur</a>
+        <a href="../index.html#demo"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Demo</a>
+        <a href="../index.html#docs"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Dokumentasi</a>
+        <a href="getting-started.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Getting
+          Started</a>
+        <a href="api-reference.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-primary-600 bg-gray-50">API Reference</a>
+        <a href="examples.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">Examples</a>
+        <a href="https://github.com/yourusername/arusdata" target="_blank"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-primary-600">
+          <i class="fab fa-github mr-1"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary-600 py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">API Reference</h1>
+      <p class="text-xl text-white text-opacity-90 max-w-3xl">
+        Dokumentasi lengkap ArusdataJS API untuk client dan server.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <div class="lg:w-64 lg:shrink-0 mb-8 lg:mb-0 lg:mr-8">
+        <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+          <h3 class="text-lg font-semibold mb-4">Daftar Isi</h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Client API</h4>
+              <ul class="space-y-2 pl-2">
+                <li><a href="#client-constructor" class="text-primary-600 hover:text-primary-800">Constructor</a></li>
+                <li><a href="#client-methods" class="text-primary-600 hover:text-primary-800">Methods</a></li>
+                <li><a href="#client-events" class="text-primary-600 hover:text-primary-800">Events</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Channel API</h4>
+              <ul class="space-y-2 pl-2">
+                <li><a href="#channel-methods" class="text-primary-600 hover:text-primary-800">Methods</a></li>
+                <li><a href="#channel-events" class="text-primary-600 hover:text-primary-800">Events</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Server API</h4>
+              <ul class="space-y-2 pl-2">
+                <li><a href="#server-constructor" class="text-primary-600 hover:text-primary-800">Constructor</a></li>
+                <li><a href="#server-methods" class="text-primary-600 hover:text-primary-800">Methods</a></li>
+                <li><a href="#server-events" class="text-primary-600 hover:text-primary-800">Events</a></li>
+                <li><a href="#server-rest-api" class="text-primary-600 hover:text-primary-800">REST API</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Protocol</h4>
+              <ul class="space-y-2 pl-2">
+                <li><a href="#protocol-messages" class="text-primary-600 hover:text-primary-800">Message Format</a></li>
+                <li><a href="#protocol-auth" class="text-primary-600 hover:text-primary-800">Authentication</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:flex-grow">
+        <!-- Client API -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 pb-2 border-b border-gray-200">Client API</h2>
+
+          <div id="client-constructor" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Constructor</h3>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                <code class="text-md font-mono">new ArusdataClient(options)</code>
+              </div>
+              <div class="p-6">
+                <p class="mb-4">
+                  Membuat instance baru ArusdataClient dengan opsi konfigurasi.
+                </p>
+
+                <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full border-collapse text-sm">
+                    <thead>
+                      <tr>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">Name
+                        </th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">Type
+                        </th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                          Default</th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                          Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.endpoint</td>
+                        <td class="py-2 px-4 border border-gray-200">String</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>'ws://localhost:8080/arusdata'</code></td>
+                        <td class="py-2 px-4 border border-gray-200">URL WebSocket server</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.reconnectInterval</td>
+                        <td class="py-2 px-4 border border-gray-200">Number</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>3000</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Interval percobaan reconnect dalam milidetik</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.autoReconnect</td>
+                        <td class="py-2 px-4 border border-gray-200">Boolean</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>true</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Reconnect otomatis saat koneksi terputus</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.autoConnect</td>
+                        <td class="py-2 px-4 border border-gray-200">Boolean</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>true</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Connect otomatis saat inisialisasi</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Example</h4>
+                <div class="bg-gray-800 rounded-md p-4">
+                  <pre class="language-javascript m-0"><code>const arusdata = new ArusdataClient({
+    endpoint: 'ws://myserver.com/arusdata',
+    reconnectInterval: 5000,
+    autoReconnect: true,
+    autoConnect: true
+});</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="client-methods" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Methods</h3>
+
+            <div class="space-y-8">
+              <!-- Method: connect -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">connect()</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mencoba untuk terhubung ke server WebSocket.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Returns</h4>
+                  <p><code>void</code></p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Memastikan client terhubung
+arusdata.connect();</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: disconnect -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">disconnect()</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Memutuskan koneksi dari server WebSocket.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Returns</h4>
+                  <p><code>void</code></p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Memutuskan koneksi
+arusdata.disconnect();</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: subscribe -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">subscribe(channelName)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Subscribe ke channel.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">channelName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama channel yang ingin disubscribe</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Channel</code> - Object channel dengan method-method untuk berinteraksi dengan channel.</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Subscribe ke channel
+const channel = arusdata.subscribe('chat-room');</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: unsubscribe -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">unsubscribe(channelName)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Unsubscribe dari channel.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">channelName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama channel yang ingin di-unsubscribe</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>void</code></p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Unsubscribe dari channel
+arusdata.unsubscribe('chat-room');</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: publish -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">publish(channelName, eventName, data)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mempublikasikan event ke channel.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">channelName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama channel tujuan</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">eventName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama event yang dipublikasikan</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">data</td>
+                          <td class="py-2 px-4 border border-gray-200">Any</td>
+                          <td class="py-2 px-4 border border-gray-200">Data yang dikirim dengan event</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Boolean</code> - true jika berhasil, false jika gagal</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Publish event ke channel
+arusdata.publish('chat-room', 'new-message', {
+    sender: 'John',
+    text: 'Hello world!'
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: onConnection -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">onConnection(callback)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendaftarkan callback untuk event koneksi berhasil.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">callback</td>
+                          <td class="py-2 px-4 border border-gray-200">Function</td>
+                          <td class="py-2 px-4 border border-gray-200">Fungsi yang dipanggil saat koneksi berhasil,
+                            menerima socketId sebagai parameter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>ArusdataClient</code> - Instance client untuk method chaining</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mendaftarkan callback koneksi
+arusdata.onConnection((socketId) => {
+    console.log('Connected with ID:', socketId);
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: onDisconnection -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">onDisconnection(callback)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendaftarkan callback untuk event koneksi terputus.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">callback</td>
+                          <td class="py-2 px-4 border border-gray-200">Function</td>
+                          <td class="py-2 px-4 border border-gray-200">Fungsi yang dipanggil saat koneksi terputus</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>ArusdataClient</code> - Instance client untuk method chaining</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mendaftarkan callback disconnection
+arusdata.onDisconnection(() => {
+    console.log('Disconnected from server');
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: getSocketId -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">getSocketId()</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendapatkan ID socket dari koneksi yang sedang berlangsung.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Returns</h4>
+                  <p><code>String|null</code> - ID socket jika terhubung, null jika belum terhubung</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mendapatkan socket ID
+const socketId = arusdata.getSocketId();</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: isConnected -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">isConnected()</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Memeriksa apakah client terhubung ke server.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Returns</h4>
+                  <p><code>Boolean</code> - true jika terhubung, false jika tidak</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Memeriksa status koneksi
+if (arusdata.isConnected()) {
+    console.log('Connected to server');
+} else {
+    console.log('Not connected');
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="client-events" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-6">Events</h3>
+
+            <p class="mb-6">
+              Client events dapat didengarkan menggunakan method <code>onConnection</code> dan
+              <code>onDisconnection</code>.
+              Berikut adalah daftar events yang tersedia:
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <div class="overflow-x-auto">
+                  <table class="min-w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Event
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Description
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Data
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>connection</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat koneksi ke server berhasil dibuat
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>socketId</code> (String) - ID socket dari koneksi
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>disconnection</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat koneksi ke server terputus
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>null</code>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Channel API -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 pb-2 border-b border-gray-200">Channel API</h2>
+
+          <div id="channel-methods" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Methods</h3>
+
+            <div class="space-y-8">
+              <!-- Method: bind -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">bind(eventName, callback)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendaftarkan callback untuk dipanggil saat event tertentu terjadi pada channel.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">eventName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama event yang ingin didengarkan</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">callback</td>
+                          <td class="py-2 px-4 border border-gray-200">Function</td>
+                          <td class="py-2 px-4 border border-gray-200">Fungsi yang dipanggil saat event terjadi,
+                            menerima data event sebagai parameter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Channel</code> - Instance channel untuk method chaining</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Binding event
+channel.bind('message', (data) => {
+console.log('Received message:', data);
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: unbind -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">unbind(eventName, callback)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Menghapus callback dari event tertentu.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">eventName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama event yang ingin dihapus callbacknya</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">callback</td>
+                          <td class="py-2 px-4 border border-gray-200">Function (optional)</td>
+                          <td class="py-2 px-4 border border-gray-200">Callback spesifik yang ingin dihapus. Jika tidak
+                            ditentukan, semua callback untuk event tersebut akan dihapus.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Channel</code> - Instance channel untuk method chaining</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Simpan referensi callback
+const messageCallback = (data) => {
+console.log('Received message:', data);
+};
+
+// Bind callback
+channel.bind('message', messageCallback);
+
+// Unbind callback tertentu
+channel.unbind('message', messageCallback);
+
+// Atau unbind semua callback untuk event tertentu
+channel.unbind('message');</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: trigger -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">trigger(eventName, data)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mempublikasikan event ke channel.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">eventName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama event yang ingin dipublikasikan</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">data</td>
+                          <td class="py-2 px-4 border border-gray-200">Any</td>
+                          <td class="py-2 px-4 border border-gray-200">Data yang ingin dikirim dengan event</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Boolean</code> - true jika berhasil, false jika gagal</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mengirim event ke channel
+channel.trigger('message', {
+text: 'Hello world!',
+timestamp: new Date().toISOString()
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: onSubscription -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">onSubscription(callback)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendaftarkan callback yang dipanggil saat subscription berhasil.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">callback</td>
+                          <td class="py-2 px-4 border border-gray-200">Function</td>
+                          <td class="py-2 px-4 border border-gray-200">Fungsi yang dipanggil saat subscription berhasil,
+                            menerima data subscription sebagai parameter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Channel</code> - Instance channel untuk method chaining</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mendaftarkan callback subscription
+channel.onSubscription((data) => {
+console.log('Successfully subscribed with data:', data);
+});</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="channel-events" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-6">Events</h3>
+
+            <p class="mb-6">
+              Channel secara otomatis menangani beberapa event sistem. Selain itu,
+              Anda dapat menangani event kustom yang dikirim dari server atau client lain.
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <h4 class="text-lg font-semibold mb-4">System Events</h4>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Event
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Description
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Data
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>subscription_succeeded</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat subscription ke channel berhasil
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ subscribers: Number }</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>subscription_error</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi jika ada error saat mencoba berlangganan ke channel
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ message: String }</code>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4 class="text-lg font-semibold mt-8 mb-4">Custom Events</h4>
+                <p>
+                  Selain system events, Anda dapat menerima dan mengirim event kustom dengan nama apapun.
+                  Event kustom dibind menggunakan method <code>bind()</code> dan dipanggil dengan method
+                  <code>trigger()</code>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Server API -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 pb-2 border-b border-gray-200">Server API</h2>
+
+          <div id="server-constructor" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Constructor</h3>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                <code class="text-md font-mono">new ArusdataServer(options)</code>
+              </div>
+              <div class="p-6">
+                <p class="mb-4">
+                  Membuat instance baru ArusdataServer dengan opsi konfigurasi.
+                </p>
+
+                <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full border-collapse text-sm">
+                    <thead>
+                      <tr>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">Name
+                        </th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">Type
+                        </th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                          Default</th>
+                        <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                          Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.port</td>
+                        <td class="py-2 px-4 border border-gray-200">Number</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>8080</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Port HTTP server</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.path</td>
+                        <td class="py-2 px-4 border border-gray-200">String</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>'/arusdata'</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Path WebSocket endpoint</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.pingInterval</td>
+                        <td class="py-2 px-4 border border-gray-200">Number</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>30000</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Interval ping/pong dalam milidetik</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.server</td>
+                        <td class="py-2 px-4 border border-gray-200">HTTPServer</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>null</code></td>
+                        <td class="py-2 px-4 border border-gray-200">HTTP server yang sudah ada (opsional)</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-4 border border-gray-200">options.authSecret</td>
+                        <td class="py-2 px-4 border border-gray-200">String</td>
+                        <td class="py-2 px-4 border border-gray-200"><code>'arusdata-secret-key'</code></td>
+                        <td class="py-2 px-4 border border-gray-200">Secret key untuk otentikasi private channels</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4 class="text-lg font-semibold mt-6 mb-2">Example</h4>
+                <div class="bg-gray-800 rounded-md p-4">
+                  <pre class="language-javascript m-0"><code>const ArusdataServer = require('arusdata-server');
+
+// Basic configuration
+const server = new ArusdataServer({
+port: 8080,
+path: '/arusdata',
+authSecret: 'my-secret-key'
+});
+
+// Advanced configuration with existing Express app
+const express = require('express');
+const http = require('http');
+
+const app = express();
+const httpServer = http.createServer(app);
+
+const arusdataServer = new ArusdataServer({
+server: httpServer,
+path: '/realtime',
+pingInterval: 60000
+});
+
+httpServer.listen(3000);</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="server-methods" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Methods</h3>
+
+            <div class="space-y-8">
+              <!-- Method: broadcastToChannel -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">broadcastToChannel(channelName, eventName, data, excludeClient)</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mengirim event ke semua client yang subscribe ke channel tertentu.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Parameters</h4>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-sm">
+                      <thead>
+                        <tr>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Name</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Type</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Default</th>
+                          <th class="py-2 px-4 bg-gray-50 text-left text-gray-700 font-medium border border-gray-200">
+                            Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">channelName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">-</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama channel tujuan</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">eventName</td>
+                          <td class="py-2 px-4 border border-gray-200">String</td>
+                          <td class="py-2 px-4 border border-gray-200">-</td>
+                          <td class="py-2 px-4 border border-gray-200">Nama event yang dikirim</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">data</td>
+                          <td class="py-2 px-4 border border-gray-200">Any</td>
+                          <td class="py-2 px-4 border border-gray-200">-</td>
+                          <td class="py-2 px-4 border border-gray-200">Data yang dikirim dengan event</td>
+                        </tr>
+                        <tr>
+                          <td class="py-2 px-4 border border-gray-200">excludeClient</td>
+                          <td class="py-2 px-4 border border-gray-200">WebSocket</td>
+                          <td class="py-2 px-4 border border-gray-200"><code>null</code></td>
+                          <td class="py-2 px-4 border border-gray-200">Client yang dikecualikan dari broadcast
+                            (opsional)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Returns</h4>
+                  <p><code>Number</code> - Jumlah client yang menerima pesan</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Broadcast ke semua client dalam channel
+const recipientCount = channelsController.broadcastToChannel(
+'chat-room',
+'new-message',
+{ sender: 'System', text: 'Hello everyone!' }
+);
+
+console.log(`Message sent to ${recipientCount} recipients`);</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method: getStats -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">getStats()</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendapatkan statistik server.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Returns</h4>
+                  <p><code>Object</code> - Objek yang berisi statistik server</p>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Example</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-javascript m-0"><code>// Mendapatkan statistik server
+const stats = server.getStats();
+
+console.log(`Active connections: ${stats.activeConnections}`);
+console.log(`Total messages processed: ${stats.messagesProcessed}`);</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="server-events" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Events</h3>
+
+            <p class="mb-6">
+              Server menghasilkan beberapa event internal. Anda dapat mendaftarkan event listeners untuk merespons event
+              ini.
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <div class="overflow-x-auto">
+                  <table class="min-w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Event
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Description
+                        </th>
+                        <th
+                          class="py-3 px-6 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border border-gray-200">
+                          Data
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>client_connected</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat client terhubung ke server
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ client: WebSocket, ip: String, clientId: String }</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>client_disconnected</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat client terputus dari server
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ clientId: String }</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>channel_subscribe</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat client berlangganan ke channel
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ client: WebSocket, channel: String }</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>channel_unsubscribe</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat client berhenti berlangganan dari channel
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ client: WebSocket, channel: String }</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>message_published</code>
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          Terjadi saat pesan dipublikasikan ke channel
+                        </td>
+                        <td class="py-4 px-6 border border-gray-200">
+                          <code>{ client: WebSocket, channel: String, event: String, data: Any }</code>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="server-rest-api" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">REST API</h3>
+
+            <p class="mb-6">
+              Server ArusdataJS menyediakan beberapa endpoint REST API untuk keperluan integrasi dan monitoring.
+            </p>
+
+            <div class="space-y-8">
+              <!-- Endpoint: Health Check -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">GET /health</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Memeriksa status kesehatan server.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Response</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+"status": "ok"
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Endpoint: Statistics -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">GET /stats</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Mendapatkan statistik server.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Response</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+"activeConnections": 5,
+"peakConnections": 12,
+"connectionsTotal": 25,
+"messagesProcessed": 142,
+"channelCount": 3,
+"channels": [
+{
+"name": "general",
+"subscribers": 3
+},
+{
+"name": "support",
+"subscribers": 2
+},
+{
+"name": "private-admin",
+"subscribers": 1
+}
+]
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Endpoint: Authentication -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <code class="text-md font-mono">POST /auth</code>
+                </div>
+                <div class="p-6">
+                  <p class="mb-4">Menghasilkan token otentikasi untuk private channels.</p>
+
+                  <h4 class="text-lg font-semibold mb-2">Request</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>POST /auth HTTP/1.1
+Content-Type: application/json
+
+{
+"channel_name": "private-channel",
+"socket_id": "client-12345"
+}</code></pre>
+                  </div>
+
+                  <h4 class="text-lg font-semibold mt-4 mb-2">Response</h4>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+"auth": "a8b25dc1d939b0d16063b500b2bbert15e55b2ert2c5f7dba1e3b9c3afc6"
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Protocol -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 pb-2 border-b border-gray-200">Protocol</h2>
+
+          <div id="protocol-messages" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Message Format</h3>
+
+            <p class="mb-6">
+              ArusdataJS menggunakan format pesan JSON untuk komunikasi antara client dan server.
+              Berikut adalah format pesan yang digunakan:
+            </p>
+
+            <div class="space-y-8">
+              <!-- Client to Server Messages -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <h4 class="text-md font-medium">Client to Server Messages</h4>
+                </div>
+                <div class="p-6">
+                  <h5 class="text-lg font-semibold mb-3">Subscribe to Channel</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"type": "subscribe",
+"channel": "channel-name"
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Subscribe to Private Channel</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"type": "subscribe",
+"channel": "private-channel-name",
+"auth": "auth-token"
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Unsubscribe from Channel</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"type": "unsubscribe",
+"channel": "channel-name"
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Publish Message</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"type": "publish",
+"channel": "channel-name",
+"event": "event-name",
+"data": {
+// Any JSON serializable data
+}
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Ping</h5>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>{
+"type": "ping"
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Server to Client Messages -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <h4 class="text-md font-medium">Server to Client Messages</h4>
+                </div>
+                <div class="p-6">
+                  <h5 class="text-lg font-semibold mb-3">Connection Established</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"event": "connection_established",
+"data": {
+"socket_id": "client-12345",
+"activity_timeout": 120
+}
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Subscription Succeeded</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"event": "subscription_succeeded",
+"channel": "channel-name",
+"data": {
+"subscribers": 5
+}
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Error</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"event": "error",
+"data": {
+"message": "Error message"
+}
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Channel Event</h5>
+                  <div class="bg-gray-800 rounded-md p-4 mb-6">
+                    <pre class="language-json m-0"><code>{
+"channel": "channel-name",
+"event": "event-name",
+"data": {
+// Any JSON serializable data
+}
+}</code></pre>
+                  </div>
+
+                  <h5 class="text-lg font-semibold mb-3">Pong</h5>
+                  <div class="bg-gray-800 rounded-md p-4">
+                    <pre class="language-json m-0"><code>{
+"event": "pong",
+"data": {
+"timestamp": 1625054237123
+}
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="protocol-auth" class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Authentication</h3>
+
+            <p class="mb-6">
+              ArusdataJS menggunakan sistem otentikasi berbasis token untuk private channels. Berikut adalah alur proses
+              otentikasi:
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
+              <h4 class="text-lg font-semibold mb-4">Authentication Flow</h4>
+
+              <ol class="list-decimal pl-6 mb-6 space-y-3">
+                <li>Client terhubung ke server dan menerima <code>socket_id</code> unik</li>
+                <li>Ketika client ingin berlangganan private channel, client meminta token otentikasi dari server
+                  melalui HTTP endpoint <code>/auth</code></li>
+                <li>Server memvalidasi apakah client memiliki izin untuk mengakses channel tersebut</li>
+                <li>Jika diizinkan, server mengembalikan token otentikasi yang dihitung dengan rumus:
+                  <code>HMAC(secret_key, socket_id + ':' + channel_name)</code>
+                </li>
+                <li>Client berlangganan ke private channel dengan menyertakan token otentikasi</li>
+                <li>Server memverifikasi token dan mengizinkan subscription jika valid</li>
+              </ol>
+
+              <h4 class="text-lg font-semibold mb-4">Authentication Request Format</h4>
+              <div class="bg-gray-800 rounded-md p-4 mb-6">
+                <pre class="language-http m-0"><code>POST /auth HTTP/1.1
+Content-Type: application/json
+
+{
+"channel_name": "private-messages",
+"socket_id": "client-12345"
+}</code></pre>
+              </div>
+
+              <h4 class="text-lg font-semibold mb-4">Authentication Response Format</h4>
+              <div class="bg-gray-800 rounded-md p-4 mb-6">
+                <pre class="language-http m-0"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+"auth": "a8b25dc1d939b0d16063b500b2bbert15e55b2ert2c5f7dba1e3b9c3afc6"
+}</code></pre>
+              </div>
+
+              <h4 class="text-lg font-semibold mb-4">Authentication Code Example</h4>
+              <div class="bg-gray-800 rounded-md p-4">
+                <pre class="language-javascript m-0"><code>// Server-side (Node.js) authentication endpoint
+app.post('/auth', express.json(), (req, res) => {
+const { channel_name, socket_id } = req.body;
+
+if (!channel_name || !socket_id) {
+return res.status(400).json({ error: 'Missing required parameters' });
+}
+
+// Validate the user's access to this channel (example)
+if (!userHasAccessToChannel(req.user, channel_name)) {
+return res.status(403).json({ error: 'Access denied' });
+}
+
+// Generate authentication signature
+const stringToSign = `${socket_id}:${channel_name}`;
+const signature = crypto
+.createHmac('sha256', config.authSecret)
+.update(stringToSign)
+.digest('hex');
+
+// Return the auth token
+res.status(200).json({
+auth: signature
+});
+});</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-4 md:mb-0">
+          <span class="text-lg font-semibold">ArusdataJS</span>
+          <p class="text-sm text-gray-400 mt-1">Real-time messaging library for JavaScript</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="../index.html" class="text-gray-400 hover:text-white">Home</a>
+          <a href="getting-started.html" class="text-gray-400 hover:text-white">Getting Started</a>
+          <a href="api-reference.html" class="text-white">API Reference</a>
+          <a href="examples.html" class="text-gray-400 hover:text-white">Examples</a>
+          <a href="https://github.com/yourusername/arusdata" target="_blank"
+            class="text-gray-400 hover:text-white">GitHub</a>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 ArusdataJS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-http.min.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+
+</html>
