@@ -166,7 +166,7 @@
             </div>
             <pre class="language-javascript m-0"><code class="text-sm">// Connect to ArusdataJS server
 const arusdata = new ArusdataClient({
-    endpoint: 'ws://arusdata-server.up.railway.app/arusdata'
+    endpoint: 'wss://arusdata-server.up.railway.app/arusdata'
 });
 
 // Subscribe to a channel
@@ -302,7 +302,7 @@ channel.trigger('new-message', {
         <div class="bg-gray-800 rounded-lg overflow-hidden">
           <pre class="language-javascript m-0"><code>// Inisialisasi client
 const arusdata = new ArusdataClient({
-  endpoint: 'ws://arusdata-server.up.railway.app/arusdata'
+  endpoint: 'wss://arusdata-server.up.railway.app/arusdata'
 });
 
 // Subscribe ke channel
