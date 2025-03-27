@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 // Demo redirect
 app.get('/demo/chat/', (req, res) => {
-  res.redirect('http://localhost:3000/'); // Redirect to chat demo
+  res.redirect('https://arusdata-demo.up.railway.app'); // Redirect to chat demo
 });
 app.get('/getting-started', (req, res) => {
   res.sendFile(path.join(__dirname, 'getting-started.html'));
